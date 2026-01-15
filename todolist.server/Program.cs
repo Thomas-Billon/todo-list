@@ -25,8 +25,8 @@ public static class ProgramExtensions
     {
         builder.Services.AddControllers();
 
-        // Swagger
         builder.Services.AddEndpointsApiExplorer();
+
         builder.Services.AddSwaggerGen();
 
         return builder;
@@ -58,7 +58,6 @@ public static class ProgramExtensions
         app.UseDefaultFiles();
         app.UseStaticFiles();
 
-        // Swagger
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();

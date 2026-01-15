@@ -4,20 +4,30 @@ namespace TodoList.Server.Dtos
 {
     public class TodoGroupDTO
     {
+        public class TodoGroupBase
+        {
+            public required int Id { get; set; }
+            public required string Title { get; set; }
+        }
+
+        public class TodoGroupResponseBase : ResponseBase
+        {
+            public required int Id { get; set; }
+            public required string Title { get; set; }
+        }
+
         public class GetAll
         {
             public class Response : ResponseBase
             {
-                public required IReadOnlyList<Get.Response> Groups { get; set; }
+                public required IReadOnlyList<TodoGroupBase> Groups { get; set; }
             }
         }
 
         public class Get
         {
-            public class Response : ResponseBase
+            public class Response : TodoGroupResponseBase
             {
-                public required int Id { get; set; }
-                public required string Title { get; set; }
             }
         }
 
@@ -29,10 +39,8 @@ namespace TodoList.Server.Dtos
                 public required string Title { get; set; }
             }
 
-            public class Response : ResponseBase
+            public class Response : TodoGroupResponseBase
             {
-                public required int Id { get; set; }
-                public required string Title { get; set; }
             }
         }
 

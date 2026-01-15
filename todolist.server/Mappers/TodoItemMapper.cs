@@ -10,7 +10,11 @@ namespace TodoList.Server.Mappers
         {
             return new TodoItemDTO.GetAll.Response
             {
-                Items = queries.Select(ToGetResponse).ToList()
+                Items = queries.Select(x => new TodoItemDTO.TodoItemBase {
+                    Id = x.Id,
+                    Title = x.Title,
+                    IsCompleted = x.IsCompleted
+                }).ToList()
             };
         }
 

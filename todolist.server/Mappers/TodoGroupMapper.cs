@@ -10,7 +10,11 @@ namespace TodoList.Server.Mappers
         {
             return new TodoGroupDTO.GetAll.Response
             {
-                Groups = queries.Select(ToGetResponse).ToList()
+                Groups = queries.Select(x => new TodoGroupDTO.TodoGroupBase
+                {
+                    Id = x.Id,
+                    Title = x.Title
+                }).ToList()
             };
         }
 
