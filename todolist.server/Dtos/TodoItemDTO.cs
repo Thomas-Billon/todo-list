@@ -4,21 +4,32 @@ namespace TodoList.Server.Dtos
 {
     public class TodoItemDTO
     {
+        public class TodoItemBase
+        {
+            public required int Id { get; set; }
+            public required string Title { get; set; }
+            public required bool IsCompleted { get; set; }
+        }
+
+        public class TodoItemResponseBase : ResponseBase
+        {
+            public required int Id { get; set; }
+            public required string Title { get; set; }
+            public required bool IsCompleted { get; set; }
+        }
+
         public class GetAll
         {
             public class Response : ResponseBase
             {
-                public required IReadOnlyList<Get.Response> Items { get; set; }
+                public required IReadOnlyList<TodoItemBase> Items { get; set; }
             }
         }
 
         public class Get
         {
-            public class Response : ResponseBase
+            public class Response : TodoItemResponseBase
             {
-                public required int Id { get; set; }
-                public required string Title { get; set; }
-                public required bool IsCompleted { get; set; }
             }
         }
 
@@ -30,11 +41,8 @@ namespace TodoList.Server.Dtos
                 public required string Title { get; set; }
             }
 
-            public class Response : ResponseBase
+            public class Response : TodoItemResponseBase
             {
-                public required int Id { get; set; }
-                public required string Title { get; set; }
-                public required bool IsCompleted { get; set; }
             }
         }
 
